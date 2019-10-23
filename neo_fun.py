@@ -1,11 +1,17 @@
 # Let's build a python application to pull some info on Near Earth Objects and give it back to people in interesting ways
 
-import request
+import requests
 import json
-import pprint
 
 # TODO: Build a method to pull the feed data based on user input start/end dates
 
+"""
+Defined variables for start/end date
+"""
+start_date = input("Please enter a starting date (Format: YYYY-MM-DD): ")
+end_date = input("Now enter an end date (Format: YYYY-MM-DD): ")
+    
+print(start_date, end_date)
 # TODO: Parse the data to return data for...
 
 # TODO: ...Furthest NEO
