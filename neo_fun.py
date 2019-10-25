@@ -37,14 +37,18 @@ neos = parsed["near_earth_objects"]["2019-10-25"]
 
 
 #def get_largest_neo():
-largest = 0
+largest = None
 for diameter in neos:
     max_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_max"])
+    name = diameter["name"]
+    if largest is None:
+        largest = max_diameter
     if largest > max_diameter:
         pass
     else:
         largest = max_diameter
-print(largest)
+print("{} is the largest NEO today at a whopping {} meters in diameter!".format(name, largest))
+
 
 #    print (max_diameter)
 
