@@ -1,0 +1,40 @@
+TODO[rdonaldson|2019-10-23] what the heck is a "tweet"? What format does it have?
+def get_gif_url(tweet):
+"""
+Given a JSON object from the Twitter API representing a tweet, pull out the URL representing the mp4 file we want to download.
+"""
+pass
+
+  
+import urllib.request
+import json
+import pprint
+contents = urllib.request.urlopen("https://api.nasa.gov/neo/rest/v1/neo/3879283?api_key=13L6o25sYaUm7Ac1Op2e09FrWudmH6N0rRhVBoCx").read()
+varab = json.loads(contents)
+
+pprint.pprint(('object 3802394 is: ')+varab['close_approach_data'][0]['miss_distance']['miles']+(" miles away!"))
+
+# NOTES FROM OCTOBER 24, 2019
+
+Example of a function for finding the "biggest" from Ross:
+    def max_by (NEOs):
+    biggest = None
+    for NEO in NEOs:
+    
+    if biggest is None:
+        biggest = NEO
+        pass
+    elif NEO["size"]["mor"] > biggest:
+        biggest = NEO
+    else:
+        pass
+    return biggest
+
+---
+
+Pretty json: python3 firstdraft.py | jq 
+Pretty JSON w/ less to just view and then 'q' to exit: python3 firstdraft.py | jq | less
+
+Use print(response.text) when you want to show pretty JSON
+Use print(response.json()) when you start actually using/pulling from the data, because print(response.json()) converts the JSON data into python in your terminal.
+
