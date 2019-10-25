@@ -57,7 +57,7 @@ for diameter in neos:
     else:
         largest = max_diameter
 print("{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(name, largest, diameter_in_armadillos, diameter_in_deloreans))
-
+# print("You might ask, 'Are we in danger?' and the answer would be...not at all! Although today is the date of close approach to Earth, it's going to pass at a comfortable {} Kilometers from our planet. You can now exhale.".format(close_approach_distance))
 
 #    print (max_diameter)
 
