@@ -1,16 +1,30 @@
 import json
 import requests
-from recursivejson import extract_values
+from neokey import apiKey
 
-response = requests.get("https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key=13L6o25sYaUm7Ac1Op2e09FrWudmH6N0rRhVBoCx"
-)
+api_url = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key="
+response = requests.get(api_url + apiKey)
 data = response.text
 parsed = json.loads(data)
-""" velocity = parsed["near_earth_objects"]["2019-10-25"][0]["close_approach_data"][0]["relative_velocity"]["kilometers_per_hour"]
-diameter = parsed["near_earth_objects"]["2019-10-25"][1]["estimated_diameter"]["feet"]["estimated_diameter_max"] """
 
-def jprint(obj):
-    text = json.dumps(obj, sort_keys=True, indent=4)
-    print(text)
+neos = parsed["near_earth_objects"]["2019-10-25"]
 
-jprint(parsed)
+for diameter in neos:
+    max_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_max"])
+
+def max(neos):
+    largest = None
+    for diameter in neos:
+        max_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_max"])
+        name = diameter["name"]
+        
+        if largest is None:
+            largest = max_diameter
+        if largest > max_diameter:
+            pass
+        else:
+            largest = max_diameter
+
+    return(largest)
+
+print(max(neos))

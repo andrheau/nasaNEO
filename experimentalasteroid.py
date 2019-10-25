@@ -1,15 +1,28 @@
 import json
 import requests
-from recursivejson import extract_values
+from dictor import dictor
+from neokey import apiKey
 
-def neo_api_matrix():
-    endpoint = "https://api.nasa.gov/neo/rest/v1/feed/today?api_key=13L6o25sYaUm7Ac1Op2e09FrWudmH6N0rRhVBoCx"
-    params = {
+api_url = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key="
+response = requests.get(api_url + apiKey)
+data = response.text
+parsed = json.loads(data)
 
-       "near_earth_objects": {}
+neos = parsed["near_earth_objects"]["2019-10-25"]
 
-    }
+for diameter in neos:
+    max_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_max"])
+    """print(max_diameter)"""
 
-    miss_distance = extract_values(response.json(), 'text')
-    return miss_distance
 
+
+def max(diameter):
+    largest = None
+    for bigdog in diameter:
+        if largest is None:
+            largest = bigdog
+        pass
+    else bigdog["max_diameter"] > largest:
+        largest = bigdog
+        pass
+    return largest
