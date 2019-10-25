@@ -38,25 +38,34 @@ length_of_delorean = 4.2
 #            pass
 #        if neo["miss_distance"]
 
-# TODO: ...Largest (diameter) NEO
+# Write a function to return the largest NEO in diameter
+def get_largest_neo(neos):
+    largest = None
+    for diameter in neos:
+        max_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_max"])
+#        name = diameter["name"]
+        if largest is None:
+            largest = max_diameter
+        if largest > max_diameter:
+            pass
+        else:
+            largest = max_diameter
+    return(largest)
 
-# def find_largest():
+# Write a function to get the name of the NEO
 
+def get_name(neos):
+    for name in neos:
+        name = name["name"]
+    return(name)
 
-#def get_largest_neo():
-largest = None
-for diameter in neos:
-    max_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_max"])
-    name = diameter["name"]
-    diameter_in_armadillos = round(max_diameter / length_of_armadillo)
-    diameter_in_deloreans = round(max_diameter / length_of_delorean)
-    if largest is None:
-        largest = max_diameter
-    if largest > max_diameter:
-        pass
-    else:
-        largest = max_diameter
-print("{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(name, largest, diameter_in_armadillos, diameter_in_deloreans))
+# TODO  Write a function to return these calculations
+
+diameter_in_armadillos = round(get_largest_neo(neos) / length_of_armadillo)
+diameter_in_deloreans = round(get_largest_neo(neos) / length_of_delorean)
+
+print("{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(get_name(neos), get_largest_neo(neos), diameter_in_armadillos, diameter_in_deloreans))
+
 # print("You might ask, 'Are we in danger?' and the answer would be...not at all! Although today is the date of close approach to Earth, it's going to pass at a comfortable {} Kilometers from our planet. You can now exhale.".format(close_approach_distance))
 
 #    print (max_diameter)
