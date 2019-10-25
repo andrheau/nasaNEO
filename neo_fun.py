@@ -5,26 +5,46 @@ import json
 
 # TODO: Build a method to pull the feed data based on user input start/end dates
 
-"""
-Defined variables for start/end date
-"""
-start_date = input("Please enter a starting date (Format: YYYY-MM-DD): ")
-while start_date is not int:
-    start_date = input("Ouch, reading instructions isn't your favorite eh? Let's make sure that date is in this format \n (YYYY-MM-DD): ")
+# API Endpoint
 
-end_date = input("Now enter an end date (Format: YYYY-MM-DD): ")
+api_url = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key="
+apiKey = "13L6o25sYaUm7Ac1Op2e09FrWudmH6N0rRhVBoCx"
 
-while end_date is not int:
-    end_date = input("Ouch, reading instructions isn't your favorite eh? Let's make sure that date is in this format \n (YYYY-MM-DD): ")
+# Get and return data
+response = requests.get(api_url + apiKey)
 
-print("Start Date: {} | End Date: {}").format(start_date, end_date)
+data = response.text
+parsed = json.loads(data)
+neos = parsed["near_earth_objects"]["2019-10-25"]
+# max_diameter = neos["estimated_diameter"]["meters"]["estimated_diameter_max"]
+
 # TODO: Parse the data to return data for...
 
 # TODO: ...Furthest NEO
 
-# TODO: ...Nearest NEO
+# TODO: ...Closest miss NEO
+# def closest_miss(neos):
+#    closest = None
+#    for neo in neos:
+#        if closest is None:
+#            closest = neo
+#            pass
+#        if neo["miss_distance"]
 
 # TODO: ...Largest (diameter) NEO
+
+# def find_largest():
+#    largest = None
+for neo in neos:
+    max_diameter = neo["estimated_diameter"]["meters"]["estimated_diameter_max"]
+    print(max_diameter)
+#            pass
+        
+#             largest = neo(max_diameter)
+#             return largest
+
+# print find_largest()
+
 
 # TODO: ...Fastest NEO
 
