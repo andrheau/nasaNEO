@@ -2,6 +2,8 @@
 
 import requests
 import json
+import datetime
+
 
 # TODO: Build a method to pull the feed data based on user input start/end dates
 
@@ -16,7 +18,8 @@ response = requests.get(api_url + apiKey)
 # Set variables based on data
 data = response.text
 parsed = json.loads(data)
-neos = parsed["near_earth_objects"]["2019-10-25"]
+todays_date = str(datetime.date.today())
+neos = parsed["near_earth_objects"][todays_date]
 
 # Set global variables
 
