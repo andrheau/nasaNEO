@@ -28,5 +28,5 @@ for asteroid in asteroids:
         else:
           print ("This asteroid poses no threat to planet Earth!")
       except:
-        print("Unable to access all data.")  
+        print("Unable to access all data.") 
       print("--------------------")
