@@ -38,3 +38,11 @@ Pretty JSON w/ less to just view and then 'q' to exit: python3 firstdraft.py | j
 Use print(response.text) when you want to show pretty JSON
 Use print(response.json()) when you start actually using/pulling from the data, because print(response.json()) converts the JSON data into python in your terminal.
 
+---
+dole terter:passenger_ship: 9:32 AM
+although you’d eventually want to not store your API key in your source code, but instead use an environment variable so it would end up being something like:
+import os
+api_url = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key="
+apiKey = os.environ['NEO_API_KEY']
+
+response = requests.get(api_url + apiKey)
