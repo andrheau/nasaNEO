@@ -41,23 +41,40 @@ def get_largest_neo(neos):
     largest = None
     for diameter in neos:
         max_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_max"])
-        name = diameter["name"]
         if largest is None:
-            largest = max_diameter
+            largest = max_diameter        
         if largest > max_diameter:
             pass
         else:
             largest = max_diameter
+            name = diameter["name"]
     return(largest, name)
+
+# TODO Function to get the smallest NEO
+
+def get_smallest_neo(neos):
+    smallest = None
+    for diameter in neos:
+        min_diameter = round(diameter["estimated_diameter"]["meters"]["estimated_diameter_min"])
+        if smallest is None:
+            smallest = min_diameter
+        if smallest < min_diameter:
+            pass
+        else:
+            smallest = min_diameter
+            name = diameter["name"]
+    return(smallest, name)
 
 # TODO  Write a function to return these calculations
 # Declare variables for other units of measure and do the math
 
-diameter_in_armadillos = round(get_largest_neo(neos)[0] / length_of_armadillo)
-diameter_in_deloreans = round(get_largest_neo(neos)[0] / length_of_delorean)
+largest_diameter_in_armadillos = round(get_largest_neo(neos)[0] / length_of_armadillo)
+largest_diameter_in_deloreans = round(get_largest_neo(neos)[0] / length_of_delorean)
+smallest_diameter_in_armadillos = round(get_smallest_neo(neos)[0] / length_of_armadillo)
+smallest_diameter_in_deloreans = round(get_smallest_neo(neos)[0] / length_of_delorean)
 
-print("{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(get_largest_neo(neos)[1], get_largest_neo(neos)[0], diameter_in_armadillos, diameter_in_deloreans))
-
+print("{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(get_largest_neo(neos)[1], get_largest_neo(neos)[0], largest_diameter_in_armadillos, largest_diameter_in_deloreans))
+print("{} is the smallest NEO today. It checks in at a paultry {} meters in diameter. \nThat means it's only {} armadillos OR {} Deloreans in diameter!".format(get_smallest_neo(neos)[1], get_smallest_neo(neos)[0], smallest_diameter_in_armadillos, smallest_diameter_in_deloreans))
 # print("You might ask, 'Are we in danger?' and the answer would be...not at all! Although today is the date of close approach to Earth, it's going to pass at a comfortable {} Kilometers from our planet. You can now exhale.".format(close_approach_distance))
 
 #    print (max_diameter)
