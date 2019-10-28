@@ -22,14 +22,12 @@ parsed = json.loads(data)
 # Sets a variable to dynamically pull today's date and then turns it into a string
 todays_date = str(datetime.date.today())
 
-# Sets "neos" as a variable which is the entirety of the API data
+# Sets "neos" as a variable which is the entirety of the API data along with some other global variables
 neos = parsed["near_earth_objects"][todays_date]
 total_neos_today = parsed["element_count"]
-
-# Set global variables
-
 length_of_armadillo = 1.5
 length_of_delorean = 4.2
+i = random.randint(1,5)
 
 # max_diameter = neos["estimated_diameter"]["meters"]["estimated_diameter_max"]
 
@@ -93,10 +91,6 @@ def get_fastest_neo(neos):
             name = speed["name"]
     return(round(velocity), name)
 
-# Random number generator for getting an insult
-
-i = random.randint(1,5)
-
 # Function to generate a random mild insult to insert in the greeting
 
 def generate_random_insult(i):
@@ -150,7 +144,7 @@ def all_done():
     if finished.lower() == "no":
         print("Okay then. I hope you enjoyed learning about whether or not we're all gonna die today. Come back anytime!")
     else:
-        print("Ummm...it was a yes or no question friend. \nLast time I checked, {} is not yes OR no. Let's try it again, shall we?")
+        print("Ummm...it was a yes or no question friend. \nLast time I checked, {} is not yes OR no. Let's try it again, shall we?".format(finished))
         all_done()
 
 main()
