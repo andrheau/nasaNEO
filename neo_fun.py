@@ -65,6 +65,22 @@ def get_smallest_neo(neos):
             name = diameter["name"]
     return(smallest, name)
 
+# Function to get the fastest NEO
+
+def get_fastest_neo(neos):
+    velocity = None
+    for speed in neos:
+        km_per_second = speed["close_approach_data"][0]["relative_velocity"]["kilometers_per_second"]
+        km_per_second = float(km_per_second)
+        if velocity is None:
+            velocity = km_per_second
+        if velocity < km_per_second:
+            pass
+        else:
+            velocity = km_per_second
+            name = speed["name"]
+    return(round(velocity), name)
+
 # TODO  Write a function to return these calculations
 # Declare variables for other units of measure and do the math
 
@@ -75,6 +91,8 @@ smallest_diameter_in_deloreans = round(get_smallest_neo(neos)[0] / length_of_del
 
 print("{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(get_largest_neo(neos)[1], get_largest_neo(neos)[0], largest_diameter_in_armadillos, largest_diameter_in_deloreans))
 print("{} is the smallest NEO today. It checks in at a paultry {} meters in diameter. \nThat means it's only {} armadillos OR {} Deloreans in diameter!".format(get_smallest_neo(neos)[1], get_smallest_neo(neos)[0], smallest_diameter_in_armadillos, smallest_diameter_in_deloreans))
+print("{} is the fastest NEO today, racing towards somwhere at a speed of {} kilometers per second." .format(get_fastest_neo(neos)[1], get_fastest_neo(neos)[0]))
+
 # print("You might ask, 'Are we in danger?' and the answer would be...not at all! Although today is the date of close approach to Earth, it's going to pass at a comfortable {} Kilometers from our planet. You can now exhale.".format(close_approach_distance))
 
 #    print (max_diameter)
