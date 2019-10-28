@@ -74,7 +74,7 @@ def get_fastest_neo(neos):
         km_per_second = float(km_per_second)
         if velocity is None:
             velocity = km_per_second
-        if velocity < km_per_second:
+        if velocity > km_per_second:
             pass
         else:
             velocity = km_per_second
