@@ -141,7 +141,8 @@ def all_done():
     finished = input("\nWell now aren't we all more informed? \nDid you want to know anything else today? (Yes/No): ")
     if finished.lower() == "yes":
         main()
-    if finished.lower() == "no":
+        all_done()
+    elif finished.lower() == "no":
         print("Okay then. I hope you enjoyed learning about whether or not we're all gonna die today. Come back anytime!")
     else:
         print("Ummm...it was a yes or no question friend. \nLast time I checked, {} is not yes OR no. Let's try it again, shall we?".format(finished))
