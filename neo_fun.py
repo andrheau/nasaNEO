@@ -132,6 +132,10 @@ def which_neo(x):
         print("\nNeo, I'm not afraid anymore. The Oracle told me that I would fall in love and that that man... \nthe man that I loved would be The One. So you see, you can't be dead. \nYou can't be... because I love you. You hear me? I love you. \nNow get up.")
         x = input("Try fastest, largest, or smallest.\n\t> ")
         return which_neo(x)
+    elif x.lower() == "help":
+        print("\nfor script in headaches \nsanity = absent \nreturn my_marbles")
+        x = input("Try fastest, largest, or smallest.\n\t> ")
+        return which_neo(x)
     else:
         print("\nOkay, you silly trickster. You and both know that {} is not any of the things I said you could ask for. \nHow's about we try that again?".format(x))
         x = input("Try fastest, largest, or smallest.\n\t> ")
@@ -141,11 +145,14 @@ def which_neo(x):
 # Function to check if the user wants more info on other NEOs
 
 def all_done():
-    finished = input("\nWell now aren't we all more informed? \nDid you want to know anything else today? (Yes/No): ")
+    finished = input("\nListen to me, Coppertop. We don't have time for 20 Questions. \nDid you want to know anything else today? (Yes/No): ")
     if finished.lower() == "yes":
         main()
     elif finished.lower() == "no":
-        print("\nOkay then. I hope you enjoyed learning about whether or not we're all gonna die today. Come back anytime!")
+        print("\nOkay then. The answer is out there, and it's looking for you, and it will find you if you want it to. Come back anytime!")
+    elif finished.lower() == "help":
+        print("\nfor script in headaches \nsanity = absent \nreturn my_marbles")
+        all_done()
     else:
         print("\nUmmm...it was a yes or no question friend. \nLast time I checked, {} is not yes OR no. Let's try it again, shall we?".format(finished))
         all_done()
