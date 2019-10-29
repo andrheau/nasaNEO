@@ -120,13 +120,10 @@ smallest_diameter_in_deloreans = round(get_smallest_neo(neos)[0] / length_of_del
 
 # All the "print" statements
 
-print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today. \nNever fear, though, only {} of them are potentially hazardous. Wait, {} of them are potentially hazardous?!!? \nEverybody run for your lives!!!! ".format(generate_random_insult(i), total_neos_today, get_total_phas(neos), get_total_phas(neos)))
-print("\nWell, since we're here anyway...")
-
 # Define the "main" function
 
 def asteroidvariables(x): 
-    asteroid =("This is an error.")
+    
     if x.lower() == "fastest":
         asteroid = "{} is the fastest NEO today, racing towards somwhere at a speed of {} kilometers per second.".format(get_fastest_neo(neos)[1], get_fastest_neo(neos)[0])
     elif x.lower() == "largest":
@@ -135,14 +132,10 @@ def asteroidvariables(x):
         asteroid = "{} is the smallest NEO today. It checks in at a paultry {} meters in diameter. \nThat means it's only {} armadillos OR {} Deloreans in diameter!".format(get_smallest_neo(neos)[1], get_smallest_neo(neos)[0], smallest_diameter_in_armadillos, smallest_diameter_in_deloreans)
     else:
         print("\nOkay, you silly trickster. You and both know that {} is not any of the things I said you could ask for. \nHow's about we try that again?".format(x))
-        main()
-    return asteroid
+        x = input("Try fastest, largest, or smallest.\n\t> ")
+        return asteroidvariables(x)
 
-def main():
-    x = input("So, do you want to know the fastest, largest, or smallest world ending near Earth object?\n\t> ")
-    asteroidresult = asteroidvariables(x)
-    print(asteroidresult)
-    all_done()
+    return asteroid
 
 def all_done():
     finished = input("\nWell now aren't we all more informed? \nDid you want to know anything else today? (Yes/No): ")
@@ -153,6 +146,14 @@ def all_done():
     else:
         print("Ummm...it was a yes or no question friend. \nLast time I checked, {} is not yes OR no. Let's try it again, shall we?".format(finished))
         all_done()
+
+def main():
+    print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today. \nNever fear, though, only {} of them are potentially hazardous. Wait, {} of them are potentially hazardous?!!? \nEverybody run for your lives!!!! ".format(generate_random_insult(i), total_neos_today, get_total_phas(neos), get_total_phas(neos)))
+    print("\nWell, since we're here anyway...")
+    x = input("So, do you want to know the fastest, largest, or smallest world ending near Earth object?\n\t> ")
+    asteroidresult = asteroidvariables(x)
+    print(asteroidresult)
+    return all_done()
 
 main()
 
