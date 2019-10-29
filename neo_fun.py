@@ -24,7 +24,7 @@ neos = parsed["near_earth_objects"][todays_date]
 total_neos_today = parsed["element_count"]
 length_of_armadillo = 1.5
 length_of_delorean = 4.2
-i = random.randint(1,5)
+i = random.randint(1,8)
 
 # Function to calculate the total number of potentially hazardous asteriods
 
@@ -94,6 +94,12 @@ def generate_random_insult(i):
         insult = "celestial conjurer of ceaseless candor"
     elif i == 5:
         insult = "laser-brained luddite"
+    elif i == 6:
+        insult = "flaky Firefly fiend"
+    elif i == 7:
+        insult = "genuine gentleperson"
+    elif i == 8:
+        insult = "spacey spheriod spelunker"
     return(insult)
 
 # Declare variables for other units of measure and do the math
