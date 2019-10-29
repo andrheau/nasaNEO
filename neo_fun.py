@@ -5,9 +5,6 @@ import json
 import datetime
 import random
 
-
-# TODO: Build a method to pull the feed data based on user input start/end dates
-
 # API Endpoint
 
 api_url = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key="
@@ -29,13 +26,6 @@ length_of_armadillo = 1.5
 length_of_delorean = 4.2
 i = random.randint(1,5)
 
-# max_diameter = neos["estimated_diameter"]["meters"]["estimated_diameter_max"]
-
-# TODO: Parse the data to return data for...
-
-# TODO: ...Furthest NEO
-
-
 # Function to calculate the total number of potentially hazardous asteriods
 
 def get_total_phas(neos):
@@ -46,7 +36,7 @@ def get_total_phas(neos):
             pass
     return(total_phas)
 
-# Write a function to return the largest NEO in diameter
+# Function to get the largest NEO
 def get_largest_neo(neos):
     largest = None
     for diameter in neos:
@@ -60,7 +50,7 @@ def get_largest_neo(neos):
             name = diameter["name"]
     return(largest, name)
 
-# TODO Function to get the smallest NEO
+# Function to get the smallest NEO
 
 def get_smallest_neo(neos):
     smallest = None
@@ -106,17 +96,12 @@ def generate_random_insult(i):
         insult = "laser-brained luddite"
     return(insult)
 
-
-
-
-# TODO  Write a function to return these calculations
 # Declare variables for other units of measure and do the math
 
 largest_diameter_in_armadillos = round(get_largest_neo(neos)[0] / length_of_armadillo)
 largest_diameter_in_deloreans = round(get_largest_neo(neos)[0] / length_of_delorean)
 smallest_diameter_in_armadillos = round(get_smallest_neo(neos)[0] / length_of_armadillo)
 smallest_diameter_in_deloreans = round(get_smallest_neo(neos)[0] / length_of_delorean)
-
 
 # All the "print" statements
 
@@ -150,23 +135,3 @@ def all_done():
 
 main()
 all_done()
-
-
-# print("You might ask, 'Are we in danger?' and the answer would be...not at all! Although today is the date of close approach to Earth, it's going to pass at a comfortable {} Kilometers from our planet. You can now exhale.".format(close_approach_distance))
-
-#    print (max_diameter)
-
-#            pass
-        
-#             largest = neo(max_diameter)
-#             return largest
-
-# print find_largest()
-
-
-# TODO: ...Fastest NEO
-
-# TODO: Any NEO classified as PHA (potentially hazardous)
-
-
-
