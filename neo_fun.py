@@ -11,20 +11,26 @@ api_url = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key="
 apiKey = "13L6o25sYaUm7Ac1Op2e09FrWudmH6N0rRhVBoCx"
 
 # Get and return data
+
 response = requests.get(api_url + apiKey)
 data = response.text
 parsed = json.loads(data)
 
-# Set variables based on data
+    # Set variables based on data
+
 # Sets a variable to dynamically pull today's date and then turns it into a string
+
 todays_date = str(datetime.date.today())
 
 # Sets "neos" as a variable which is the entirety of the API data along with some other global variables
+
 neos = parsed["near_earth_objects"][todays_date]
 total_neos_today = parsed["element_count"]
 length_of_armadillo = 1.5
 length_of_delorean = 4.2
 i = random.randint(1,8)
+
+    # Functions
 
 # Function to calculate the total number of potentially hazardous asteriods
 
@@ -65,6 +71,13 @@ def get_smallest_neo(neos):
             name = diameter["name"]
     return(smallest, name)
 
+# Declare variables for comparitive units of measure and do the math
+
+largest_diameter_in_armadillos = round(get_largest_neo(neos)[0] / length_of_armadillo)
+largest_diameter_in_deloreans = round(get_largest_neo(neos)[0] / length_of_delorean)
+smallest_diameter_in_armadillos = round(get_smallest_neo(neos)[0] / length_of_armadillo)
+smallest_diameter_in_deloreans = round(get_smallest_neo(neos)[0] / length_of_delorean)
+
 # Function to get the fastest NEO
 
 def get_fastest_neo(neos):
@@ -99,45 +112,60 @@ def generate_random_insult(i):
     elif i == 7:
         insult = "genuine gentleperson"
     elif i == 8:
-        insult = "spacey spheriod spelunker"
+        insult = "spacey spheroid spelunker"
     return(insult)
 
-# Declare variables for other units of measure and do the math
+# Function to get the user's chosen NEO
 
-largest_diameter_in_armadillos = round(get_largest_neo(neos)[0] / length_of_armadillo)
-largest_diameter_in_deloreans = round(get_largest_neo(neos)[0] / length_of_delorean)
-smallest_diameter_in_armadillos = round(get_smallest_neo(neos)[0] / length_of_armadillo)
-smallest_diameter_in_deloreans = round(get_smallest_neo(neos)[0] / length_of_delorean)
-
-# All the "print" statements
-
-print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today. \nNever fear, though, only {} of them are potentially hazardous. Wait, {} of them are potentially hazardous?!!? \nEverybody run for your lives!!!! ".format(generate_random_insult(i), total_neos_today, get_total_phas(neos), get_total_phas(neos)))
-print("\nWell, since we're here anyway...")
-
-# Define the "main" function
-
-def main():
-    x = input("\nWould you like to know about the largest, fastest, or smallest NEO? ")
-    if x.lower() == "largest":
-        print("\n{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(get_largest_neo(neos)[1], get_largest_neo(neos)[0], largest_diameter_in_armadillos, largest_diameter_in_deloreans))
+def which_neo(x): 
+    if x.lower() == "fastest":
+        this_neo = "\n{} is the fastest NEO today, racing towards somewhere at a speed of {} kilometers per second.".format(get_fastest_neo(neos)[1], get_fastest_neo(neos)[0])
+    elif x.lower() == "largest":
+        this_neo = "\n{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(get_largest_neo(neos)[1], get_largest_neo(neos)[0], largest_diameter_in_armadillos, largest_diameter_in_deloreans)
     elif x.lower() == "smallest":
-        print("\n{} is the smallest NEO today. It checks in at a paultry {} meters in diameter. \nThat means it's only {} armadillos OR {} Deloreans in diameter!".format(get_smallest_neo(neos)[1], get_smallest_neo(neos)[0], smallest_diameter_in_armadillos, smallest_diameter_in_deloreans))
-    elif x.lower() == "fastest":
-        print("\n{} is the fastest NEO today, racing towards somewhere at a speed of {} kilometers per second." .format(get_fastest_neo(neos)[1], get_fastest_neo(neos)[0]))
+        this_neo = "\n{} is the smallest NEO today. It checks in at a paultry {} meters in diameter. \nThat means it's only {} armadillos OR {} Deloreans in diameter!".format(get_smallest_neo(neos)[1], get_smallest_neo(neos)[0], smallest_diameter_in_armadillos, smallest_diameter_in_deloreans)
+    elif x.lower() == "the matrix":
+        print("\nYou should have taken the blue pill.")
+        x = input("Try fastest, largest, or smallest.\n\t> ")
+        return which_neo(x)
+    elif x.lower() == "trinity":
+        print("\nNeo, I'm not afraid anymore. The Oracle told me that I would fall in love and that that man... \nthe man that I loved would be The One. So you see, you can't be dead. \nYou can't be... because I love you. You hear me? I love you. \nNow get up.")
+        x = input("Try fastest, largest, or smallest.\n\t> ")
+        return which_neo(x)
     else:
         print("\nOkay, you silly trickster. You and both know that {} is not any of the things I said you could ask for. \nHow's about we try that again?".format(x))
-        main()
+        x = input("Try fastest, largest, or smallest.\n\t> ")
+        return which_neo(x)
+    return this_neo
+
+# Function to check if the user wants more info on other NEOs
 
 def all_done():
     finished = input("\nWell now aren't we all more informed? \nDid you want to know anything else today? (Yes/No): ")
     if finished.lower() == "yes":
         main()
-        all_done()
     elif finished.lower() == "no":
-        print("Okay then. I hope you enjoyed learning about whether or not we're all gonna die today. Come back anytime!")
+        print("\nOkay then. I hope you enjoyed learning about whether or not we're all gonna die today. Come back anytime!")
     else:
-        print("Ummm...it was a yes or no question friend. \nLast time I checked, {} is not yes OR no. Let's try it again, shall we?".format(finished))
+        print("\nUmmm...it was a yes or no question friend. \nLast time I checked, {} is not yes OR no. Let's try it again, shall we?".format(finished))
         all_done()
 
+# Function to initiate the greeting
+
+def greeting_message():
+    print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today. \nNever fear, though, only {} of them are potentially hazardous. Wait, {} of them are potentially hazardous?!!? \nEverybody run for your lives!!!! ".format(generate_random_insult(i), total_neos_today, get_total_phas(neos), get_total_phas(neos)))
+    print("\nWell, since we're here anyway...")
+
+# Main function
+
+def main(): 
+    x = input("\nSo, do you want to know the fastest, largest, or smallest world ending near Earth object?\n\t> ")
+    this_asteroid = which_neo(x)
+    print(this_asteroid)
+    return all_done()
+
+
+# Call the greeting and main functions
+
+greeting_message()
 main()
-all_done()
