@@ -144,23 +144,23 @@ def which_neo(x):
         this_neo = "\n{} is making the closest approach today. \nIt's going to miss us by a mere {} times the distance between Earth and the moon. No sweat, right?".format(get_closest_neo(neos)[1], get_closest_neo(neos)[0])
     elif x.lower() == "the matrix":
         print("\nYou should have taken the blue pill.")
-        x = input("Try fastest, closest, largest, or smallest.\n\t> ")
+        x = input("\nTry fastest, closest, largest, or smallest.\n\t> ")
         return which_neo(x)
     elif x.lower() == "help":
         print("\nfor script in headaches \nsanity = absent \nreturn my_marbles")
-        x = input("Try fastest, closest, largest, or smallest.\n\t> ")
+        x = input("\nTry fastest, closest, largest, or smallest.\n\t> ")
         return which_neo(x)
     elif x.lower() == "morpheus":
         print("\nThe Oracle told me... \nI would find The One.")
-        x = input("Try fastest, closest, largest, or smallest.\n\t> ")
+        x = input("\nTry fastest, closest, largest, or smallest.\n\t> ")
         return which_neo(x)
     elif x.lower() == "trinity":
         print("\nNeo, I'm not afraid anymore. The Oracle told me that I would fall in love and that that man... \nthe man that I loved would be The One. So you see, you can't be dead. \nYou can't be... because I love you. You hear me? I love you. \nNow get up.")
-        x = input("Try fastest, closest, largest, or smallest.\n\t> ")
+        x = input("\nTry fastest, closest, largest, or smallest.\n\t> ")
         return which_neo(x)
     else:
         print("\nOkay, you silly trickster. You and both know that {} is not any of the things I said you could ask for. \nHow's about we try that again?".format(x))
-        x = input("Try fastest, closest, largest, or smallest.\n\t> ")
+        x = input("\nTry fastest, closest, largest, or smallest.\n\t> ")
         return which_neo(x)
     return this_neo
 
@@ -169,7 +169,7 @@ def which_neo(x):
 def all_done():
     finished = input("\nListen to me, Coppertop. We don't have time for 20 Questions. \nDid you want to know anything else today? (Yes/No): ")
     if finished.lower() == "yes":
-        main()
+        get_input()
     elif finished.lower() == "help":
         print("\nfor script in headaches \nsanity = absent \nreturn my_marbles")
         print("\nTry yes or no this time, would ya? ")
@@ -190,11 +190,11 @@ def greeting_message():
         print("\nOn the bright side, only {} of them has the potential to destroy the planet, so we're...wait.. \n{} of them could potentially destroy the planet?!!? \nEverbody run for your lives!!!".format(get_total_phas(neos), get_total_phas(neos))) 
     else:
         print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today. \nNever fear, though, only {} of them are potentially hazardous. Wait, {} of them are potentially hazardous?!!? \nEverybody run for your lives!!!! ".format(generate_random_insult(i), total_neos_today, get_total_phas(neos), get_total_phas(neos)))
-    print("\nWell, since we're here anyway...")
+    print("\nOh, I see you're still here. In that case...")
 
 # Main function
 
-def main(): 
+def get_input(): 
     x = input("\nDo you want to know more about the fastest, closest, largest, or smallest world ending near Earth object?\n\t> ")
     this_asteroid = which_neo(x)
     print(this_asteroid)
@@ -203,5 +203,8 @@ def main():
 
 # Call the greeting and main functions
 
-greeting_message()
+def main():
+    greeting_message()
+    get_input()
+
 main()
