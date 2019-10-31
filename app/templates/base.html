@@ -1,0 +1,14 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - The Doom Foretold</title>
+        {% else %}
+        <title>These are the endtimes, my friend.</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>Doom Estimate: <a href="/asteroid">The Object</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
