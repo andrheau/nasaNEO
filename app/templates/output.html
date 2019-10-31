@@ -1,6 +1,18 @@
 <!DOCTYPE HTML>
 
-    <p> {{ asteroid_form }}</p>
+{% if asteroid_form == "largest" %}
+<p>{{ stats.supahbig }} is the largest NEO today at a whopping , {{ stats.supahbigdiameter }} meters in diameter!</p>
+<p>That means it's {{ stats.largestarmadillo}} armadillos OR {{ stats.largestdelorean}} Deloreans in diameter!</p>
+{% elif asteroid_form == "smallest" %}
+<p>{{ stats.smallestname }} is the smallest NEO today. It checks in at a paultry {{ stats.smallestdiameter}} meters in diameter.</p>
+<p>That means it's only {{ stats.smallestarmadillo }} armadillos OR {{ stats.smallestdelorean }} Deloreans in diameter!</p>
+{% elif asteroid_form == "fastest" %}
+<p>{{ stats.fastestname }} is the fastest NEO today, racing towards somwhere at a speed of {{ stats.fastestspeed }} kilometers per second.</p>
+{% elif asteroid_form == "whatever" %}
+<p>whatever whatever it's a daewoo</p>
+{% else %}
+<h1>Uh... good then.</h1>
+{% endif %}
 
     <form action="/getasteroid" method="post">
         Form to be tested:<br>

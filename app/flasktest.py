@@ -11,6 +11,7 @@ smallest_delorean = neo_stats.smallest_diameter_in_deloreans()
 smallest_armadillo = neo_stats.smallest_diameter_in_armadillos()
 largest_armadillo = neo_stats.largest_diameter_in_armadillos()
 
+
 @app.route("/")
 def home():
     user = {'username': 'Moon Person'}
@@ -25,26 +26,26 @@ def asteroid():
 def experiment():
     return render_template('experimentalasteroid.html')
 
-''' @app.route("/getasteroid", methods=["post"])
-def get_asteroid():
-    if asteroid_form = request.form.keys():
-        asteroid = request.form['asteroid_form']
-    else 
-        asteroid = none
-    return render_template('output.html', asteroid_form=asteroid) '''
-
 @app.route("/getasteroid", methods=["post"])
 def get_asteroid():
-    asteroid_form = request.form['asteroid_form']
-    if asteroid_form.lower() == "fastest":
-        asteroid = "{} is the fastest NEO today, racing towards somwhere at a speed of {} kilometers per second.".format(fastest[1], fastest[0])
-    elif asteroid_form.lower() == "largest":
-        asteroid = "{} is the largest NEO today at a whopping {} meters in diameter! \nThat means it's {} armadillos OR {} Deloreans in diameter!".format(largest[1], largest[0], largest_armadillo, largest_delorean)
-    elif asteroid_form.lower() == "smallest":
-        asteroid = "{} is the smallest NEO today. It checks in at a paultry {} meters in diameter. \nThat means it's only {} armadillos OR {} Deloreans in diameter!".format(smallest[1], smallest[0], smallest_armadillo, smallest_delorean)
-    else: 
-        asteroid = None
-    return render_template('output.html', asteroid_form=asteroid)    
+    stats = {
+    "supahbig" : largest[1],
+    "supahbigdiameter" : largest[0],
+    "fastestname" : fastest[1],
+    "fastestspeed" : fastest[0],
+    "smallestname" : smallest[1],
+    "smallestdiameter" : smallest[0],
+    "largestarmadillo" : largest_armadillo,
+    "smallestarmadillo" : smallest_armadillo,
+    "largestdelorean" : largest_delorean,
+    "smallestdelorean" : smallest_delorean
+    }
+
+    if 'asteroid_form' in request.form.keys():
+        asteroid = request.form['asteroid_form']
+    
+    return render_template('output.html', asteroid_form=asteroid, stats=stats)    
 
 if __name__ == "__main__":
     app.run(debug=True)
+

@@ -11,25 +11,13 @@ response = requests.get(api_url + apiKey)
 data = response.text
 parsed = json.loads(data)
 
-# Set variables based on data
-# Sets a variable to dynamically pull today's date and then turns it into a string
 todays_date = str(datetime.datetime.utcnow().date())
 
-# Sets "neos" as a variable which is the entirety of the API data along with some other global variables
 neos = parsed["near_earth_objects"][todays_date]
 total_neos_today = parsed["element_count"]
 length_of_armadillo = 1.5
 length_of_delorean = 4.2
 i = random.randint(1,5)
-
-# max_diameter = neos["estimated_diameter"]["meters"]["estimated_diameter_max"]
-
-# TODO: Parse the data to return data for...
-
-# TODO: ...Furthest NEO
-
-
-# Function to calculate the total number of potentially hazardous asteriods
 
 def get_total_phas(neos):
     total_phas = 0
@@ -39,7 +27,6 @@ def get_total_phas(neos):
             pass
     return(total_phas)
 
-# Write a function to return the largest NEO in diameter
 def get_largest_neo():
     largest = None
     neos = parsed["near_earth_objects"][todays_date]

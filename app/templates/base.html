@@ -7,8 +7,9 @@
         {% endif %}
     </head>
     <body>
+        {% block content %}
         <div>Doom Estimate: <a href="/asteroid">The Object</a></div>
         <hr>
-        {% block content %}{% endblock %}
+        {% endblock %}
     </body>
 </html>
