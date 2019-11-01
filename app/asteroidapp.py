@@ -19,10 +19,6 @@ def home():
     user = {'username': 'Moon Person'}
     return render_template('experimentalasteroid.html', title='Doom', user=user, total_neos=neo_stats.total_neos_today, random_insult=neo_stats.generate_random_insult(i), random_insult2=neo_stats.generate_random_insult(i), total_phas=neo_stats.get_total_phas())
 
-@app.route('/music/<path:vyra-disco-metropolis>')
-def download_file(filename):
-    return send_from_directory('/home/name/Music/', filename)
-
 @app.route("/asteroid")
 def asteroid():
     user = {'username': 'Moon Person'}
