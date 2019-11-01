@@ -29,8 +29,6 @@ def experiment():
     return render_template('template.html')
 
 @app.route("/getasteroid", methods=["post"])
-def download_file(filename):
-    return send_from_directory('/home/name/Music/', filename)
 
 def get_asteroid():
     stats = {
@@ -48,11 +46,13 @@ def get_asteroid():
     "smallest_url" : smallest[2],
     "fastesturl" : fastest [2]
     }
-
-    if 'asteroid_form' in request.form.keys():
+    if request.form['asteroid_form'] == "disco":
+        return render_template('disco.html')
+    elif 'asteroid_form' in request.form.keys():
         asteroid = request.form['asteroid_form']
     elif 'largest' in request.form.keys():
         asteroid = 'largest'
+    
 
     return render_template('output.html', asteroid_form=asteroid, stats=stats)
 
