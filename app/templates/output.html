@@ -2,6 +2,8 @@
 
 <html>
 <head> 
+
+<link rel="stylesheet" href="static/css/main.css"><html>
 </head>
 
 <body>
@@ -46,10 +48,22 @@
 
 <br>
 
-    <form action="/getasteroid" method="post">
-        <input type="hidden" name="largest" value="largest">
-        <input type="submit" value="Largest"> 
-    </form>
+<div class="row">
+<form action="/getasteroid" method="post">
+    <input type="hidden" name="largest" value="largest">
+    <input type="submit" value="Largest">  
+</form>
+
+<form action="/getasteroid" method="post">
+    <input type="hidden" name="smallest" value="smallest">
+    <input type="submit" value="Smallest">  
+</form>
+
+<form action="/getasteroid" method="post">
+    <input type="hidden" name="fastest" value="fastest">
+    <input type="submit" value="Fastest">  
+</form>
+</div>
 
 </body>
 
