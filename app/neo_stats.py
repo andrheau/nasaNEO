@@ -19,7 +19,8 @@ length_of_armadillo = 1.5
 length_of_delorean = 4.2
 i = random.randint(1,8)
 
-def get_total_phas(neos):
+def get_total_phas():
+    neos = parsed["near_earth_objects"][todays_date]
     total_phas = 0
     for pha in neos:
         if pha["is_potentially_hazardous_asteroid"] is True:
@@ -39,8 +40,8 @@ def get_largest_neo():
         else:
             largest = max_diameter
             name = diameter["name"]
-
-    return(largest, name)
+            nasa_url = diameter["nasa_jpl_url"]
+    return(largest, name, nasa_url)
 
 # TODO Function to get the smallest NEO
 
@@ -56,7 +57,8 @@ def get_smallest_neo():
         else:
             smallest = min_diameter
             name = diameter["name"]
-    return(smallest, name)
+            nasa_url = diameter["nasa_jpl_url"]
+    return(smallest, name, nasa_url)
 
 # Function to get the fastest NEO
 
@@ -73,7 +75,8 @@ def get_fastest_neo():
         else:
             velocity = km_per_second
             name = speed["name"]
-    return(round(velocity), name)
+            nasa_url = speed["nasa_jpl_url"]
+    return(round(velocity), name, nasa_url)
 
 def largest_diameter_in_armadillos(): 
     length_of_armadillo = 1.5
@@ -113,13 +116,4 @@ def generate_random_insult(i):
         insult = "genuine gentleperson"
     elif i == 8:
         insult = "spacey spheroid spelunker"
-    return(insult)
-
-def greeting_message():
-    print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today.".format(generate_random_insult(i), total_neos_today))   
-    if get_total_phas(neos) == 0:
-        return print("\nNever fear, though, none of them are potentially hazardous. It's smooth sailing for planet Earth today.")
-    elif get_total_phas(neos) == 1:
-        return print("\nOn the bright side, only {} of them has the potential to destroy the planet, so we're...wait.. \n{} of them could potentially destroy the planet?!!? \nEverbody run for your lives!!!".format(get_total_phas(neos), get_total_phas(neos))) 
-    else:
-        return print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today. \nNever fear, though, only {} of them are potentially hazardous. Wait, {} of them are potentially hazardous?!!? \nEverybody run for your lives!!!! ".format(generate_random_insult(i), total_neos_today, get_total_phas(neos), get_total_phas(neos)))
+    return (insult)

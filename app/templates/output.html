@@ -1,21 +1,73 @@
 <!DOCTYPE HTML>
 
+<html>
+<head> 
+    <link rel="stylesheet" href="static/css/disco.css">
+</head>
+
+<body>
 {% if asteroid_form == "largest" %}
-<p>{{ stats.supahbig }} is the largest NEO today at a whopping , {{ stats.supahbigdiameter }} meters in diameter!</p>
-<p>That means it's {{ stats.largestarmadillo}} armadillos OR {{ stats.largestdelorean}} Deloreans in diameter!</p>
+<p>{{ stats.supahbig }} is the largest NEO today at a whopping {{ stats.supahbigdiameter }} meters in diameter!</p>
+<p>That means it's {{ stats.largestarmadillo }} armadillos OR {{ stats.largestdelorean }} Deloreans in diameter!</p>
+<a href="{{ stats.largest_url }};old=0;orb=1;cov=0;log=0;cad=0#orb" target="_blank"> Let's get a closer look! </a>
 {% elif asteroid_form == "smallest" %}
 <p>{{ stats.smallestname }} is the smallest NEO today. It checks in at a paultry {{ stats.smallestdiameter}} meters in diameter.</p>
 <p>That means it's only {{ stats.smallestarmadillo }} armadillos OR {{ stats.smallestdelorean }} Deloreans in diameter!</p>
+<a href="{{ stats.smallest_url }};old=0;orb=1;cov=0;log=0;cad=0#orb" target="_blank"> Let's get a closer look! </a>
 {% elif asteroid_form == "fastest" %}
-<p>{{ stats.fastestname }} is the fastest NEO today, racing towards somwhere at a speed of {{ stats.fastestspeed }} kilometers per second.</p>
-{% elif asteroid_form == "whatever" %}
-<p>whatever whatever it's a daewoo</p>
+<p>{{ stats.fastestname }} is the fastest NEO today, and its racing towards us from somwhere at a speed of {{ stats.fastestspeed }} kilometers per second.</p>
+<a href="{{ stats.fastesturl }};old=0;orb=1;cov=0;log=0;cad=0#orb" target="_blank"> Let's get a closer look! </a>
+{% elif asteroid_form == "the matrix" %}
+<h1>Woah.</h1>
+<p>You should have taken the blue pill.</p>
+{% elif asteroid_form == "help" %}
+<pre>def a_haiku():</pre>
+<pre>   for script in headaches </pre>
+<pre>       sanity = absent</pre>
+<pre>   return my_marbles</pre>
+{% elif asteroid_form == "morpheus" %}
+<p>The Oracle told me... <br>I would find The One.</p>
+{% elif asteroid_form == "trinity" %}
+<p>Neo, I'm not afraid anymore. The Oracle told me that I would fall in love and that that man...</p>
+<p>the man that I loved would be The One. So you see, you can't be dead.</p> 
+<p>You can't be... because I love you. You hear me? I love you. </p>
+<p>Now get up."</p>
+{% elif asteroid_form == 'disco' %}
+
+<p>Thanks for being the best team anyone could ask for!</p>
+
+<div id="discoBallLight"></div>
+<div id="discoBall">
+  <div id="discoBallMiddle"></div>
+</div>
+
+<iframe style="display:none" width="560" height="315" src="https://www.youtube.com/embed/ftdZ363R9kQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<script  src="static/javascript/disco.js"></script>
+</script>
+
+<embed name="disco" src="/music/vyra-disco-metropolis.mp3" loop="false" hidden="true" autostart="true">
+
 {% else %}
-<h1>Uh... good then.</h1>
+<p>Okay, you silly trickster. You and I both know that "{{ asteroid_form }}" is not any of the things I said you could ask for.</p>
+<p>How's about we try that again?"</p>
 {% endif %}
 
+<p>Want to give it another shot?</p>
+
     <form action="/getasteroid" method="post">
-        Form to be tested:<br>
-        <input type="text" name="asteroid_form"/>
-        <input type="submit" value="Done"/>
+        You know the drill:<br>
+        <input type="text" name="asteroid_form">
+        <input type="submit" value="Done">
     </form>
+
+<br>
+
+    <form action="/getasteroid" method="post">
+        <input type="hidden" name="largest" value="largest">
+        <input type="submit" value="Largest"> 
+    </form>
+
+</body>
+
+</html>

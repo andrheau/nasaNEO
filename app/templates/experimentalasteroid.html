@@ -1,10 +1,34 @@
 <!DOCTYPE HTML>
 <html>
     <body>
+        <h1>Well hello, you {{ random_insult }}! </h1>
+        <h2></h2>Today, there are {{ total_neos }} Near Earth Objects (NEOs) on close approach to worry your little head over.</h2>
+        {% if total_phas == 0 %}
+        <p>Never fear, though, none of them are potentially hazardous. It's smooth sailing for planet Earth today. </p>
+        <h3>It's hard to say when the end will approach us (at high velocity), but we're happy to help you evaluate your time left on this mortal coil! </h3>
+        {% else %}
+        <p>On the bright side, only {{ total_phas }} of them has the potential to destroy the planet, so we're... 
+        <br><br>
+        <h1>*wait*</h1>
+        <br><h1>...</h1><br>
+        <h2><b>{{ total_phas }} of them could potentially destroy the planet?!!?</b> Everbody run for your lives!!!" </h2>
+        <h3>Is the world ending? Probably. But, since we're here anyway, we might as well have some fun with it.</h3>
+        {% endif %}
+
+    <h3>Now, you {{ random_insult2 }}, type fastest, largest, or smallest to identify the the most relevant NEO of the day! </h3>
+
     <form action="/getasteroid" method="post">
-        Form to be tested:<br>
-        <input type="text" name="asteroid_form"/>
-        <input type="submit" value="Done"/>
+        <input type="text" name="asteroid_form">
+        <input type="submit" value="Done">
     </form>
+
+<br>
+<br>
+    <h3>Or click the button below to sample the largest approaching NEO du jour!</h3>
+    <form action="/getasteroid" method="post">
+        <input type="hidden" name="largest" value="largest">
+        <input type="submit" value="Largest">  
+    </form>
+
     </body>
 </html>
