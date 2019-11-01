@@ -46,12 +46,13 @@ def get_asteroid():
     "smallest_url" : smallest[2],
     "fastesturl" : fastest [2]
     }
-    if request.form['asteroid_form'] == "disco":
+    
+    if 'largest' in request.form.keys():
+        asteroid = 'largest'
+    elif request.form['asteroid_form'] == "disco":
         return render_template('disco.html')
     elif 'asteroid_form' in request.form.keys():
         asteroid = request.form['asteroid_form']
-    elif 'largest' in request.form.keys():
-        asteroid = 'largest'
     
 
     return render_template('output.html', asteroid_form=asteroid, stats=stats)
