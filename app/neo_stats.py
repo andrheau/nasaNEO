@@ -17,7 +17,7 @@ neos = parsed["near_earth_objects"][todays_date]
 total_neos_today = parsed["element_count"]
 length_of_armadillo = 1.5
 length_of_delorean = 4.2
-i = random.randint(1,5)
+i = random.randint(1,8)
 
 def get_total_phas(neos):
     total_phas = 0
@@ -94,3 +94,32 @@ def largest_diameter_in_deloreans():
     length_of_delorean = 4.2
     largest_delorean= round(get_largest_neo()[0] / length_of_delorean)
     return largest_delorean
+
+def generate_random_insult(i):
+    i = random.randint(1,8)
+    if i == 1:
+        insult = "worry wart"
+    elif i == 2:
+        insult = "high level hypochondriac"
+    elif i == 3:
+        insult = "inquisitive interstellar instigator"
+    elif i == 4:
+        insult = "celestial conjurer of ceaseless candor"
+    elif i == 5:
+        insult = "laser-brained luddite"
+    elif i == 6:
+        insult = "flaky Firefly fiend"
+    elif i == 7:
+        insult = "genuine gentleperson"
+    elif i == 8:
+        insult = "spacey spheroid spelunker"
+    return(insult)
+
+def greeting_message():
+    print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today.".format(generate_random_insult(i), total_neos_today))   
+    if get_total_phas(neos) == 0:
+        return print("\nNever fear, though, none of them are potentially hazardous. It's smooth sailing for planet Earth today.")
+    elif get_total_phas(neos) == 1:
+        return print("\nOn the bright side, only {} of them has the potential to destroy the planet, so we're...wait.. \n{} of them could potentially destroy the planet?!!? \nEverbody run for your lives!!!".format(get_total_phas(neos), get_total_phas(neos))) 
+    else:
+        return print("Well hello you {}! Since you asked, there are {} Near Earth Objects on close approach today. \nNever fear, though, only {} of them are potentially hazardous. Wait, {} of them are potentially hazardous?!!? \nEverybody run for your lives!!!! ".format(generate_random_insult(i), total_neos_today, get_total_phas(neos), get_total_phas(neos)))

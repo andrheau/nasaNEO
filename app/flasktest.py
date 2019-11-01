@@ -1,5 +1,6 @@
 from flask import render_template, request, Flask
 import neo_stats
+import random
 
 app = Flask(__name__)
 
@@ -10,12 +11,12 @@ largest_delorean = neo_stats.largest_diameter_in_deloreans()
 smallest_delorean = neo_stats.smallest_diameter_in_deloreans()
 smallest_armadillo = neo_stats.smallest_diameter_in_armadillos()
 largest_armadillo = neo_stats.largest_diameter_in_armadillos()
-
+i = random.randint(1,8)
 
 @app.route("/")
 def home():
     user = {'username': 'Moon Person'}
-    return render_template('template.html', title='Doom', user=user)
+    return render_template('experimentalasteroid.html', title='Doom', user=user, total_neos=neo_stats.total_neos_today, random_insult=neo_stats.generate_random_insult(i))
 
 @app.route("/asteroid")
 def asteroid():
@@ -24,7 +25,7 @@ def asteroid():
 
 @app.route("/experimentalasteroid")
 def experiment():
-    return render_template('experimentalasteroid.html')
+    return render_template('template.html')
 
 @app.route("/getasteroid", methods=["post"])
 def get_asteroid():
@@ -43,7 +44,9 @@ def get_asteroid():
 
     if 'asteroid_form' in request.form.keys():
         asteroid = request.form['asteroid_form']
-    
+    elif 'largest' in request.form.keys():
+        asteroid = 'largest'
+
     return render_template('output.html', asteroid_form=asteroid, stats=stats)    
 
 if __name__ == "__main__":
