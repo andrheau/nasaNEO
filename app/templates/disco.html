@@ -3,22 +3,36 @@
 <html>
 <head> 
     <link rel="stylesheet" href="static/css/disco.css">
+    <link rel="stylesheet" href="static/css/starfield.css">
 </head>
 
-<body></body>
+<body>
 
-<p>Thanks for being the best team anyone could ask for!</p>
+    <div style="z-index:10;">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+    </div>
+
+<div style="z-index:1000;">
+<p class="thankyouthankyou">This is for the best SQSP Code Camp™ <br>class of all time!</p>
+
+    
+
+<audio autoplay preload="auto">
+        <source src="/static/vyra-disco-metropolis.mp3" type="audio/mpeg" autoplay/>
+        This text displays if the audio tag isn't supported.
+    </audio>
+
 
 <div id="discoBallLight"></div>
 <div id="discoBall">
   <div id="discoBallMiddle"></div>
 </div>
 
-<iframe style="display:none" width="560" height="315" src="https://www.youtube.com/embed/ftdZ363R9kQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 <script  src="static/javascript/disco.js"></script>
 </script>
-
+</div>
 </body>
 
 </html>

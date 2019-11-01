@@ -19,15 +19,6 @@ def home():
     user = {'username': 'Moon Person'}
     return render_template('experimentalasteroid.html', title='Doom', user=user, total_neos=neo_stats.total_neos_today, random_insult=neo_stats.generate_random_insult(i), random_insult2=neo_stats.generate_random_insult(i), total_phas=neo_stats.get_total_phas())
 
-@app.route("/asteroid")
-def asteroid():
-    user = {'username': 'Moon Person'}
-    return render_template('asteroid.html', title='Doom', user=user)
-
-@app.route("/experimentalasteroid")
-def experiment():
-    return render_template('template.html')
-
 @app.route("/getasteroid", methods=["post"])
 
 def get_asteroid():
@@ -49,6 +40,10 @@ def get_asteroid():
     
     if 'largest' in request.form.keys():
         asteroid = 'largest'
+    elif 'smallest' in request.form.keys():
+        asteroid = 'smallest'
+    elif 'fastest' in request.form.keys():
+        asteroid = 'fastest'
     elif request.form['asteroid_form'] == "disco":
         return render_template('disco.html')
     elif 'asteroid_form' in request.form.keys():

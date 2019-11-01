@@ -1,6 +1,6 @@
 html {
     width: 100%;
-    height: 100%;  
+    height: 100%; 
   }
   
   body {
@@ -98,3 +98,19 @@ html {
     bottom: 12px;
     right: 20px;
   }
+
+  .thankyouthankyou {
+    text-align: center;
+    color: white;
+    font-family: starfish;
+    font-size: 5em;
+    line-height: 2;
+    margin-top: 14%;
+    z-index: 1000; 
+  }
+
+  .topdiv {
+    margin-top: 10%;
+    
+  }
+
